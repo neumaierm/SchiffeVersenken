@@ -5,13 +5,13 @@ import java.util.LinkedList;
 public class Player {
 	private String name;
 	private final Field ownField;
-	private final Field enemyFied;
+	private final Field enemyField;
 	private LinkedList<Ship> myShips;
 	
 	
 	public Player(Field ownField, Field enemyField){
 		this.ownField = ownField;
-		this.enemyFied = enemyField;
+		this.enemyField = enemyField;
 		myShips = ownField.getShips();
 	}
 	
@@ -27,7 +27,8 @@ public class Player {
 	private void setShip(Ship ship){
 		myShips.add(ship);
 	}
-	private void shoot(){
+	
+	public void shoot(Block target){
 		//TODO do shooting here
 	}
 }
