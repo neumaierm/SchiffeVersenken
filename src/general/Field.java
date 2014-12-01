@@ -1,10 +1,11 @@
 package general;
 
+import java.awt.Container;
 import java.awt.Point;
 import java.util.HashMap;
 import java.util.LinkedList;
 
-public class Field {
+public class Field extends Container{
 	//private final int size = 100;
 	private HashMap <Point, Block> blocks;
 	private LinkedList<Ship> ships;
