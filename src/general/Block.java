@@ -1,42 +1,57 @@
 package general;
 
+import java.awt.Point;
+
 
 public class Block {
+	//Needing the point just for convenient storing in field's hashmap
 	private int x;
 	private int y;
+	private Point point;
 	private Property property;
 	public enum Property{
 		WATER, SHIP
 	};
-		private boolean shot;
+	private boolean shot;
 		
 	public Block(int x,int y){
-		this.x=x;
-		this.y=y;
+		point = new Point(x,y);
+		this.x = x;
+		this.y = y;
 		this.property=Property.WATER;
 	
 	}
-	public int getX(){
-		return this.x;
+		
+	public Property getProperty() {
+		return property;
 	}
-	public void setX(int x){
-		this.x=x;
+
+	public void setProperty(Property property) {
+		this.property = property;
 	}
-	public int getY(){
-		return this.y;
-	}
-	public void setY(int y){
-		this.y=y;
-	}
-	public boolean getShot(){
+
+	public boolean isShot(){
 		return this.shot;
 	}
+	
 	public void setShot(){
-		this.shot=shot;
-		
+		this.shot=true;
 	}
-	public  Property click(Player player,boolean initialize){	
-		if(intitialize){
+
+	public Point getPoint() {
+		return point;
+	}
+
+	public int getX() {
+		return x;
+	}
+
+	public int getY() {
+		return y;
+	}
+
+	/*public  Property click(Player player,boolean initialize){	
+		if( true){
 			player.setShip(this);
 			}
 		else{
@@ -44,6 +59,5 @@ public class Block {
 		}
 
 		return this.property;
-	}
-		
+	} */
 }

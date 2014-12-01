@@ -24,8 +24,8 @@ public class Player {
 		this.name = name;
 	}
 	
-	private void setShip(Ship ship){
-		myShips.add(ship);
+	private void setShip(Block startingBlock){
+		//TODO
 	}
 	
 	public void shoot(Block target){
