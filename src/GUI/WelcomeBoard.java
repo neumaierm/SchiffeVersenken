@@ -1,68 +1,64 @@
 package GUI;
 
-import java.awt.Color;
+import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 public class WelcomeBoard extends JFrame {
 	public WelcomeBoard (){
-		Container welcomePanel = getContentPane();
-		welcomePanel.setLayout(null);
-		
-		JLabel lblWilkommenBeiSchiffe = new JLabel("Schiffe versenken");
-		lblWilkommenBeiSchiffe.setBounds(6, 6, 438, 50);
-		lblWilkommenBeiSchiffe.setFont(new Font("Arial Black", Font.PLAIN, 20));
-		lblWilkommenBeiSchiffe.setHorizontalAlignment(SwingConstants.CENTER);
-		welcomePanel.add(lblWilkommenBeiSchiffe);
-		
-		JButton btnNeuesSpielStarten = new JButton("Neues Spiel starten");
-		btnNeuesSpielStarten.setBounds(142, 222, 165, 50);
-		welcomePanel.add(btnNeuesSpielStarten);
-		
-		JLabel lblSpielerEins = new JLabel(" Spieler Eins");
-		lblSpielerEins.setBounds(6, 79, 76, 16);
-		welcomePanel.add(lblSpielerEins);
-		
-		JLabel lblSpielerZwei = new JLabel(" Spieler Zwei");
-		lblSpielerZwei.setBounds(3, 145, 79, 16);
-		welcomePanel.add(lblSpielerZwei);
-		
-		JTextField textField = new JTextField();
-		textField.setBounds(6, 105, 438, 28);
-		welcomePanel.add(textField);
-		textField.setColumns(10);
-		
-		JTextField textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(6, 173, 438, 28);
-		welcomePanel.add(textField_1);
-		
+		Container welcomeBoard = getContentPane();
+		welcomeBoard.setLayout(new BorderLayout());
 		setVisible(true);
 		setTitle("Schiffe versenken");
-		setSize(450,325);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
-		btnNeuesSpielStarten.addActionListener(new ActionListener() {
+		Container con = new Container();
+		con.setLayout(new GridLayout(4,1));
+		
+		JLabel lblSchiffeVersenken = new JLabel(" Schiffe versenken ");
+		lblSchiffeVersenken.setFont(new Font("Arial Black", Font.PLAIN, 22));
+		lblSchiffeVersenken.setHorizontalAlignment(SwingConstants.CENTER);
+		
+		JLabel playerOneLabel = new JLabel(" Spieler Eins: ");
+		JTextField playerOneName = new JTextField();
+		JLabel playerTwoLabel = new JLabel(" Spieler Zwei: ");
+		JTextField playerTwoName = new JTextField();
+		
+		JButton btnStart = new JButton("Start");
+		
+		
+		con.add(playerOneLabel);
+		con.add(playerOneName);
+		con.add(playerTwoLabel);
+		con.add(playerTwoName);
+		
+		welcomeBoard.add(btnStart, BorderLayout.SOUTH);
+		welcomeBoard.add(con, BorderLayout.CENTER);
+		welcomeBoard.add(lblSchiffeVersenken, BorderLayout.NORTH);
+		
+		pack();
+		
+		btnStart.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String one = textField.getText();
-				String two = textField_1.getText();
-				if (one.equals("") || two.equals("")) {
+				if(playerOneName.getText().equals("") || playerTwoName.getText().equals("")){
 					
 				} else {
-					new PlayBoard();
-				}				
+					PlayBoard playBoard = new PlayBoard();
+				}
+				
 			}
-		});
-		
+		});	
 	}
 }
