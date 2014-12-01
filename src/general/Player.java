@@ -1,19 +1,33 @@
 package general;
 
+import java.util.LinkedList;
+
 public class Player {
-	String name;
+	private String name;
+	private final Field ownField;
+	private final Field enemyFied;
+	private LinkedList<Ship> myShips;
 	
-	public Player(String name){
-		this.name = name;
-		
-		Field ownField = new Field();
-		Field enemyField = new Field();
+	
+	public Player(Field ownField, Field enemyField){
+		this.ownField = ownField;
+		this.enemyFied = enemyField;
+		myShips = ownField.getShips();
 	}
 	
-	private void setShip(){
-		
+	public Player(Field ownField, Field enemyField, String name){
+		this(ownField, enemyField);
+		this.name = name;
+	}
+	
+	public void setName(String name){
+		this.name = name;
+	}
+	
+	private void setShip(Ship ship){
+		myShips.add(ship);
 	}
 	private void shoot(){
-		
+		//TODO do shooting here
 	}
 }
