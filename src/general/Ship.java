@@ -6,7 +6,7 @@ import java.awt.Point;
 
 public class Ship {
 	public enum Type{
-		SCHLACHTSCHIFF, KREUZER, ZERSTÖRER,
+		SCHLACHTSCHIFF, KREUZER, ZERSTOERER,
 		UBOOT
 	};
 	
@@ -27,7 +27,7 @@ public class Ship {
 		sunk = false;
 		switch(length){
 			case 2: type = Type.UBOOT; break;
-			case 3: type = Type.ZERSTÖRER; break;
+			case 3: type = Type.ZERSTOERER; break;
 			case 4: type = Type.KREUZER; break;
 			case 5: type = Type.SCHLACHTSCHIFF; break;
 			default: throw(new IllegalArgumentException());
