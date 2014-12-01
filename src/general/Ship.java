@@ -8,7 +8,7 @@ public class Ship {
 	public enum Type{
 		UBOOT, ZERSTOERER, KREUZER, SCHLACHTSCHIFF
 	};
-	
+
 	public enum Orientation{
 		HORIZONTALLY, VERTICALLY
 	};
@@ -54,6 +54,13 @@ public class Ship {
 			sunk &= b.isShot();
 		}
 		return sunk;
+	}
+	
+	/**
+	 * @return the type
+	 */
+	public Type getType() {
+		return type;
 	}
 
 }
