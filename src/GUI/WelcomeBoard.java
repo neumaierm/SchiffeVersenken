@@ -1,5 +1,8 @@
 package GUI;
 
+import general.Field;
+import general.Player;
+
 import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Font;
@@ -55,6 +58,10 @@ public class WelcomeBoard extends JFrame {
 				if(playerOneName.getText().equals("") || playerTwoName.getText().equals("")){
 					
 				} else {
+					Field fieldOne = new Field();
+					Field fieldTwo = new Field();
+					Player playerOne = new Player(fieldOne, fieldTwo, playerOneName.getText());
+					Player playerTwo = new Player(fieldTwo, fieldOne, playerTwoName.getText());
 					PlayBoard playBoard = new PlayBoard();
 				}
 				
