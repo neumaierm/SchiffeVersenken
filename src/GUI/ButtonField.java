@@ -30,10 +30,6 @@ public class ButtonField extends JPanel {
 		}
 	}
 	
-	private void callBlock(int x,int y){
-		//click(bA[x][y],x,y);
-	}
-	
 	public HashMap<JButton, Point> getButtonMap(){
 		return buttonMap;
 	}
