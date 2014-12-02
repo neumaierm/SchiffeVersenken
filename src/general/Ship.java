@@ -6,10 +6,9 @@ import java.awt.Point;
 
 public class Ship {
 	public enum Type{
-		SCHLACHTSCHIFF, KREUZER, ZERSTOERER,
-		UBOOT
+		UBOOT, ZERSTOERER, KREUZER, SCHLACHTSCHIFF
 	};
-	
+
 	public enum Orientation{
 		HORIZONTALLY, VERTICALLY
 	};
@@ -20,18 +19,12 @@ public class Ship {
 	private int length;
 	private boolean sunk;
 	
-	public Ship(int length, Block startingBlock, Orientation orientation, Field field){
-		occupiedBlocks = new Block[length];
-		this.length = length;
+	public Ship(Type type, Block startingBlock, Orientation orientation, Field field){
+		this.occupiedBlocks = new Block[length];
 		this.orientation = orientation;
-		sunk = false;
-		switch(length){
-			case 2: type = Type.UBOOT; break;
-			case 3: type = Type.ZERSTOERER; break;
-			case 4: type = Type.KREUZER; break;
-			case 5: type = Type.SCHLACHTSCHIFF; break;
-			default: throw(new IllegalArgumentException());
-		}
+		this.sunk = false;
+		this.type = type;
+		this.length = type.ordinal() + 2;
 		this.setup(field, startingBlock);
 	}
 	
@@ -54,6 +47,20 @@ public class Ship {
 			}
 		}
 		
+	}
+	
+	public boolean isSunk(){
+		for(Block b : occupiedBlocks){
+			sunk &= b.isShot();
+		}
+		return sunk;
+	}
+	
+	/**
+	 * @return the type
+	 */
+	public Type getType() {
+		return type;
 	}
 
 }

@@ -1,5 +1,8 @@
 package general;
 
+import general.Ship.Orientation;
+import general.Ship.Type;
+
 import java.util.LinkedList;
 
 public class Player {
@@ -28,8 +31,19 @@ public class Player {
 		return this.name;
 	}
 	
-	private void setShip(Block startingBlock){
-		//TODO
+	public void setShip(Block startingBlock){
+		Type type = Type.SCHLACHTSCHIFF;//TODO get from GUI
+		Orientation orientation = Orientation.HORIZONTALLY; //TODO get from GUI
+		Ship ship = new Ship(type, startingBlock, orientation, ownField);
+		myShips.add(ship);
+	}
+	
+	public boolean isDefeated(){
+		boolean defeated = true;
+		for(Ship s : myShips){
+			defeated &= s.isSunk();
+		}
+		return defeated;
 	}
 	
 	public void shoot(Block target){
