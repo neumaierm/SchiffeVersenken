@@ -12,10 +12,10 @@ public class Field {
 	public Field() {
 		blocks = new HashMap<>();
 		ships = new LinkedList<>();
-		for(int x=1;x<=rowSize;x++){
-			for(int y=1;y<=rowSize;y++){
-				Block block=new Block(x,y);
-				blocks.put(new Point(x,y),block);
+		for(int x = 1; x <= rowSize; x++){
+			for(int y = 1; y <= rowSize; y++){
+				Block block = new Block(x, y);
+				blocks.put(new Point(x, y), block);
 			}
 		}
 	}
@@ -26,6 +26,10 @@ public class Field {
 	
 	public Block getBlock(Point point){
 		return blocks.get(point);
+	}
+	
+	public HashMap<Point, Block> getBlocks(){
+		return blocks;
 	}
 	public Block getBlock(int x,int y){
 		Point point=new Point(x,y);
