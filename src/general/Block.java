@@ -13,7 +13,12 @@ public class Block extends Observable{
 		WATER, SHIP
 	};
 	private boolean shot;
-		
+	
+	/**
+	 * Generates an empty block, thus being "water"
+	 * @param x Coordinate
+	 * @param y Coordinate
+	 */
 	public Block(int x,int y){
 		point = new Point(x,y);
 		this.x = x;
@@ -34,6 +39,9 @@ public class Block extends Observable{
 		return this.shot;
 	}
 	
+	/**
+	 * Changes the shot status and notifies the ship, if belonging to one
+	 */
 	public void setShot(){
 		setChanged();
 		this.shot=true;
