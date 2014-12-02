@@ -14,10 +14,6 @@ import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
 
 public class PlayBoard extends JFrame{
-	static Field fieldOne = new Field();
-	static Field fieldTwo = new Field();
-	static Player playerOne = new Player(fieldOne, fieldTwo, "neumaierm");
-	static Player playerTwo = new Player(fieldTwo, fieldOne, "joekoe");
 	
 	public PlayBoard (Field fieldOne, Field fieldTwo, Player playerOne, Player playerTwo){
 		Container playBoard = getContentPane();
@@ -33,6 +29,8 @@ public class PlayBoard extends JFrame{
 		TitledBorder titleOne = BorderFactory.createTitledBorder(playerOne.getName());
 		playerOneContainer.setBorder(titleOne);
 		//TODO ADD FIELD
+		ButtonField test = new ButtonField();
+		playerOneContainer.add(test);
 		
 		JPanel playerTwoContainer = new JPanel();
 		TitledBorder titleTwo = BorderFactory.createTitledBorder(playerTwo.getName());
@@ -96,6 +94,10 @@ public class PlayBoard extends JFrame{
 		
 	}
 	public static void main(String args[]){
+		Field fieldOne = new Field();
+		Field fieldTwo = new Field();
+		Player playerOne = new Player(fieldOne, fieldTwo, "neumaierm");
+		Player playerTwo = new Player(fieldTwo, fieldOne, "joekoe");
 		new PlayBoard(fieldOne, fieldTwo, playerOne, playerTwo);
 	}
 }

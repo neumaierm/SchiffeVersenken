@@ -36,6 +36,6 @@ public class ButtonField extends JPanel {
 		}
 	}
 	private void callBlock(int x,int y){
-		click(bA[x][y],x,y);
+		//click(bA[x][y],x,y);
 	}
 }
