@@ -52,14 +52,7 @@ public class Block extends Observable{
 		return y;
 	}
 
-	/*public  Property click(Player player,boolean initialize){	
-		if( true){
-			player.setShip(this);
-			}
-		else{
-			player.shoot(this);
-		}
-
-		return this.property;
-	} */
+	public  Property click(){	
+		return null;
+	} 
 }
