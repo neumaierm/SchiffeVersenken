@@ -4,7 +4,6 @@ import general.Field;
 import general.Player;
 
 import java.awt.Container;
-import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 
@@ -45,12 +44,50 @@ public class PlayBoard extends JFrame{
 		TitledBorder titleShips = BorderFactory.createTitledBorder("Schiffe");
 		playerShips.setBorder(titleShips);
 		
-		Container shipOne = new Container();
-		shipOne.setLayout(new FlowLayout(FlowLayout.LEFT));
+		JPanel battleship = new JPanel();
+		battleship.setLayout(new FlowLayout(FlowLayout.LEFT));
 		for (int i = 0; i < 5; i++) {
-			shipOne.add(new JButton());
+			battleship.add(new FieldButton());
 		}
-		playerShips.add(shipOne);
+		playerShips.add(battleship);
+		
+		JPanel cruiser = new JPanel();
+		cruiser.setLayout(new FlowLayout(FlowLayout.LEFT));
+		for (int i = 0; i < 2; i++) {
+			for (int j = 0; j < 4; j++) {
+				cruiser.add(new FieldButton());
+			}
+			if (i == 0) {
+				cruiser.add(new JButton());
+			}
+		}
+		playerShips.add(cruiser);
+		
+		JPanel destroyer = new JPanel();
+		destroyer.setLayout(new FlowLayout(FlowLayout.LEFT));
+		for (int i = 0; i < 3; i++) {
+			for (int j = 0; j < 3; j++) {
+				destroyer.add(new FieldButton());
+			}
+			if (i < 2) {
+				destroyer.add(new JButton());
+			}
+		}
+		playerShips.add(destroyer);
+		
+		JPanel submarine = new JPanel();
+		submarine.setLayout(new FlowLayout(FlowLayout.LEFT));
+		for (int i = 0; i < 4; i++) {
+			for (int j = 0; j < 2; j++) {
+				submarine.add(new FieldButton());
+			}
+			if (i < 3) {
+				submarine.add(new JButton());
+			}
+		}
+		playerShips.add(submarine);
+		
+		
 		
 		
 		add(playerOneContainer);
