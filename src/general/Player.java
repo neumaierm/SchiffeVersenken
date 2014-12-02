@@ -69,6 +69,7 @@ public class Player extends Observable implements Observer{
 		boolean defeated = true;
 		for(Ship s : myShips){
 			defeated &= s.isSunk();
+			if(!defeated) break;
 		}
 		if(defeated){
 			setChanged();

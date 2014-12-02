@@ -82,10 +82,13 @@ public class Ship extends Observable implements Observer{
 		/*
 		 * Check shot for all occupied blocks. If all were shot, the ship has sunk and obs will me notified
 		 */
+		boolean tempSunk = true;
 		for(Block b : occupiedBlocks){
-			sunk &= b.isShot();
+			tempSunk &= b.isShot();
+			if(!tempSunk)break;
 		}
-		if(sunk){
+		if(tempSunk){
+			sunk = true;
 			setChanged();
 			notifyObservers();
 		}
