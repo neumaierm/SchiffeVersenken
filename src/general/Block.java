@@ -2,26 +2,29 @@ package general;
 
 import java.awt.Point;
 import java.util.Observable;
+import javax.swing.JButton;
 
-public class Block extends Observable{
-	//Needing the point just for convenient storing in field's hashmap
+public class Block extends Observable {
+	// Needing the point just for convenient storing in field's hashmap
 	private int x;
 	private int y;
 	private Point point;
 	private Property property;
-	public enum Property{
+
+	public enum Property {
 		WATER, SHIP
 	};
+
 	private boolean shot;
-		
-	public Block(int x,int y){
-		point = new Point(x,y);
+
+	public Block(int x, int y) {
+		point = new Point(x, y);
 		this.x = x;
 		this.y = y;
-		this.property=Property.WATER;
-	
+		this.property = Property.WATER;
+
 	}
-		
+
 	public Property getProperty() {
 		return property;
 	}
@@ -30,13 +33,13 @@ public class Block extends Observable{
 		this.property = property;
 	}
 
-	public boolean isShot(){
+	public boolean isShot() {
 		return this.shot;
 	}
-	
-	public void setShot(){
+
+	public void setShot() {
 		setChanged();
-		this.shot=true;
+		this.shot = true;
 		notifyObservers();
 	}
 
@@ -52,7 +55,7 @@ public class Block extends Observable{
 		return y;
 	}
 
-	public  Property click(){	
+	public Property click(JButton button,int x,int y) {
 		return null;
-	} 
+	}
 }
