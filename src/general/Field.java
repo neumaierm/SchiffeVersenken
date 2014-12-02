@@ -8,6 +8,7 @@ public class Field {
 	private final int rowSize = 10;
 	private HashMap <Point, Block> blocks;
 	private LinkedList<Ship> ships;
+	private Player owner;
 	
 	public Field() {
 		blocks = new HashMap<>();
@@ -24,6 +25,10 @@ public class Field {
 		return ships;
 	}
 	
+	public void setOwner(Player player){
+		this.owner = owner;
+	}
+	
 	public Block getBlock(Point point){
 		return blocks.get(point);
 	}
@@ -34,6 +39,15 @@ public class Field {
 	public Block getBlock(int x,int y){
 		Point point=new Point(x,y);
 		return blocks.get(point);
+	}
+	
+	public void getShot (Point p){
+		blocks.get(p).setShot();
+	}
+
+	public Player getOwner() {
+		// TODO Auto-generated method stub
+		return owner;
 	}
 
 }

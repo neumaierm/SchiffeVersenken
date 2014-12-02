@@ -14,6 +14,7 @@ public class Player extends Observable implements Observer{
 	private final Field ownField;
 	private final Field enemyField;
 	private LinkedList<Ship> myShips;
+	private boolean active; 
 	
 	/**
 	 * Defines a player object as owner of a field and it's ships.
@@ -25,6 +26,7 @@ public class Player extends Observable implements Observer{
 		this.ownField = ownField;
 		this.enemyField = enemyField;
 		myShips = ownField.getShips();
+		active = false;
 	}
 	
 	/**
@@ -78,11 +80,19 @@ public class Player extends Observable implements Observer{
 		return defeated;
 	}
 	
-	//TODO
-	public void shoot(Block target){
-		if(target.getProperty().equals(Property.SHIP)){
-			//for (Ship s : )
-		}
+	
+	/**
+	 * @return the active
+	 */
+	public boolean isActive() {
+		return active;
+	}
+
+	/**
+	 * @param active the active to set
+	 */
+	public void setActive(boolean active) {
+		this.active = active;
 	}
 
 	@Override

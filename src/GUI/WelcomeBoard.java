@@ -62,7 +62,10 @@ public class WelcomeBoard extends JFrame {
 					Field fieldTwo = new Field();
 					Player playerOne = new Player(fieldOne, fieldTwo, playerOneName.getText());
 					Player playerTwo = new Player(fieldTwo, fieldOne, playerTwoName.getText());
+					fieldOne.setOwner(playerOne);
+					fieldTwo.setOwner(playerTwo);
 					PlayBoard playBoard = new PlayBoard(fieldOne, fieldTwo, playerOne, playerTwo);
+					
 				}
 				
 			}
