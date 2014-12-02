@@ -3,8 +3,10 @@ package general;
 import general.Block.Property;
 
 import java.awt.Point;
+import java.util.Observable;
+import java.util.Observer;
 
-public class Ship {
+public class Ship extends Observable implements Observer{
 	public enum Type{
 		UBOOT, ZERSTOERER, KREUZER, SCHLACHTSCHIFF
 	};
@@ -36,6 +38,7 @@ public class Ship {
 			for(int i = 0; i < length; i++){
 				occBlock = field.getBlock(new Point(xTemp + i, yTemp));
 				occBlock.setProperty(Property.SHIP);
+				occBlock.addObserver(this);
 				occupiedBlocks[i] = occBlock;
 			}
 		}
@@ -43,6 +46,7 @@ public class Ship {
 			for (int i = 0; i < length; i++){
 				occBlock = field.getBlock(new Point(xTemp, yTemp + i));
 				occBlock.setProperty(Property.SHIP);
+				occBlock.addObserver(this);
 				occupiedBlocks[i] = occBlock;
 			}
 		}
@@ -53,6 +57,10 @@ public class Ship {
 		for(Block b : occupiedBlocks){
 			sunk &= b.isShot();
 		}
+		if(sunk){
+			setChanged();
+			notifyObservers();
+		}
 		return sunk;
 	}
 	
@@ -61,6 +69,12 @@ public class Ship {
 	 */
 	public Type getType() {
 		return type;
+	}
+
+	@Override
+	public void update(Observable arg0, Object arg1) {
+		isSunk();
+		
 	}
 
 }

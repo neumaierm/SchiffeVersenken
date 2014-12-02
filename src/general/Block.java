@@ -1,9 +1,9 @@
 package general;
 
 import java.awt.Point;
+import java.util.Observable;
 
-
-public class Block {
+public class Block extends Observable{
 	//Needing the point just for convenient storing in field's hashmap
 	private int x;
 	private int y;
@@ -35,7 +35,9 @@ public class Block {
 	}
 	
 	public void setShot(){
+		setChanged();
 		this.shot=true;
+		notifyObservers();
 	}
 
 	public Point getPoint() {

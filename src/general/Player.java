@@ -1,11 +1,15 @@
 package general;
 
+import general.Block.Property;
 import general.Ship.Orientation;
 import general.Ship.Type;
 
 import java.util.LinkedList;
+import java.util.Observable;
+import java.util.Observer;
 
-public class Player {
+
+public class Player extends Observable implements Observer{
 	private String name;
 	private final Field ownField;
 	private final Field enemyField;
@@ -35,6 +39,7 @@ public class Player {
 		Type type = Type.SCHLACHTSCHIFF;//TODO get from GUI
 		Orientation orientation = Orientation.HORIZONTALLY; //TODO get from GUI
 		Ship ship = new Ship(type, startingBlock, orientation, ownField);
+		ship.addObserver(this);
 		myShips.add(ship);
 	}
 	
@@ -43,10 +48,21 @@ public class Player {
 		for(Ship s : myShips){
 			defeated &= s.isSunk();
 		}
+		if(defeated){
+			setChanged();
+			notifyObservers();
+		}
 		return defeated;
 	}
 	
 	public void shoot(Block target){
-		//TODO do shooting here
+		if(target.getProperty().equals(Property.SHIP)){
+			//for (Ship s : )
+		}
+	}
+
+	@Override
+	public void update(Observable o, Object arg) {
+		isDefeated();
 	}
 }
