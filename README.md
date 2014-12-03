@@ -1,3 +1,3 @@
 SchiffeVersenken
 ================
-by Johannes Koenen, Helmut Schober, Neumaier Moritz
+by Johannes Koenen, Helmut Schober, Neumaier Moritz, Patrick Amthor
