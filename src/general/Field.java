@@ -4,11 +4,17 @@ import java.awt.Point;
 import java.util.HashMap;
 import java.util.LinkedList;
 
-public class Field {
+import javax.swing.JPanel;
+
+import GUI.ButtonField;
+
+public class Field extends JPanel{
+	
 	private final int rowSize = 10;
 	private HashMap <Point, Block> blocks;
 	private LinkedList<Ship> ships;
 	private Player owner;
+	ButtonField field;
 	
 	public Field() {
 		blocks = new HashMap<>();
@@ -19,10 +25,18 @@ public class Field {
 				blocks.put(new Point(x, y), block);
 			}
 		}
+		/*
+		 * Create new Field over ButtonField.java
+		 */
+		field = new ButtonField();
 	}
 	
 	public LinkedList<Ship> getShips(){
 		return ships;
+	}
+	
+	public JPanel getField(){
+		return field;
 	}
 	
 	public void setOwner(Player player){

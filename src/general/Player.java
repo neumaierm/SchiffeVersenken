@@ -1,12 +1,13 @@
 package general;
 
-import general.Block.Property;
 import general.Ship.Orientation;
 import general.Ship.Type;
 
 import java.util.LinkedList;
 import java.util.Observable;
 import java.util.Observer;
+
+import javax.swing.JPanel;
 
 
 public class Player extends Observable implements Observer{
@@ -39,6 +40,10 @@ public class Player extends Observable implements Observer{
 	public Player(Field ownField, Field enemyField, String name){
 		this(ownField, enemyField);
 		this.name = name;
+	}
+	
+	public JPanel getOwnField(){
+		return ownField;
 	}
 	
 	public void setName(String name){
